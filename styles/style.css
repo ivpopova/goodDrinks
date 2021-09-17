@@ -1,0 +1,851 @@
+/* GoodDrinks - Ivana Popova and Kiril Golov (C) 2021 */
+
+/* general styles */
+* {
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+	display: block;
+}
+
+body {
+	background: white;
+}
+
+a, p, strong, b, h1, h2, h3, h4, h5, h6, i, span, body, div, input {
+	font-family: 'Open Sans', sans-serif;
+}
+
+form { margin: 0; }
+
+div, ul, ol, body, p {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+ul {
+	list-style: none;
+	float: left;
+}
+
+ul li {
+	white-space: normal;
+	display: block;
+}
+
+/* top menu */
+
+div.menu-container {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 10;
+}
+
+ul.topmenu {
+	background-color: #ba1628;
+	overflow: hidden;
+}
+
+ul.dropmenu {
+	position: absolute;
+	background: #ba1628;
+
+	opacity: 0;
+	visibility: hidden;
+
+	-ms-transition: all .25s ease-in-out;
+	-webkit-transition: all .25s ease-in-out;
+	-moz-transition: all .25s ease-in-out;
+  transition: all .25s ease-in-out;
+}
+ul.dropmenu.hover {
+	opacity: 1;
+	visibility: visible;
+}
+ul.dropmenu li {
+	width: 100%;
+	text-align: center;
+}
+ul.dropmenu a {
+	padding: 10px 15px;
+	font-size: 14px;
+	color: white;
+}
+@media screen and (max-width: 555px) {
+	ul.dropmenu a {
+		font-size: 11px;
+	}
+}
+ul.dropmenu li:hover a {
+	background-color: #C81860;
+}
+
+ul.topmenu > li {
+	float: left;
+}
+
+ul.topmenu > li > a {
+	text-align: center;
+	padding: 0 15px;
+	color: white;
+	text-transform: uppercase;
+}
+
+@media screen and (min-width: 935px) {
+	ul.topmenu > li > a {
+		line-height: 45px;
+		font-size: 14px;
+	}
+}
+@media screen and (min-width: 430px) and (max-width: 935px) {
+	ul.topmenu > li > a {
+		line-height: 38px;
+		font-size: 11px;
+	}
+}
+@media screen and (max-width: 430px) {
+	ul.topmenu > li > a {
+		line-height: 30px;
+		font-size: 8px;
+	}
+}
+
+ul.topmenu > li > a:hover {
+    background-color: #C81860;
+}
+
+ul.topmenu > li.drop > a:after {
+	font-family: "FontAwesome";
+	content: " \f0d7";
+}
+
+ul.topmenu > li.right {
+	float: right;
+}
+
+div.scroll-to-top {
+	position: fixed;
+	opacity: 0;
+	visibility: hidden;
+	overflow: hidden;
+	text-align: center;
+	z-index: 15;
+	background-color: #777;
+	color: #eee;
+
+	border-radius: 10px;
+
+	-webkit-transition: all 0.45s ease-in-out;
+    -moz-transition: all 0.45s ease-in-out;
+    -ms-transition: all 0.45s ease-in-out;
+    -o-transition: all 0.45s ease-in-out;
+    transition: all 0.45s ease-in-out;
+}
+
+div.scroll-to-top.show {
+	visibility: visible;
+	cursor: pointer;
+	opacity: 1.0;
+}
+
+div.scroll-to-top:hover {
+	background-color: #888;
+	-ms-transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+	-moz-transform: scale(1.1);
+  transform: scale(1.1);
+}
+
+@media screen and (min-width: 880px) {
+	div.scroll-to-top {
+		width: 50px;
+		height: 48px;
+		right: 30px;
+		bottom: 30px;
+	}
+	div.scroll-to-top i {
+		font-size: 32px;
+		margin-top: 8px;
+	}
+}
+
+@media screen and (min-width: 655px) and (max-width: 880px) {
+	div.scroll-to-top {
+		width: 44px;
+		height: 42px;
+		right: 26.25px;
+		bottom: 26.25px;
+	}
+	div.scroll-to-top i {
+		font-size: 28px;
+		margin-top: 7px;
+	}
+}
+
+@media screen and (max-width: 655px) {
+	div.scroll-to-top {
+		width: 34px;
+		height: 32px;
+		right: 20.25px;
+		bottom: 20.25px;
+	}
+	div.scroll-to-top i {
+		font-size: 21px;
+		margin-top: 5.5px;
+	}
+}
+
+body > div {
+	height: auto;
+	display: block;
+	float: left;
+	margin-top: 20px;
+	padding-bottom: 25px;
+	border-bottom: 2px solid #eee;
+}
+@media screen and (max-width: 980px) {
+	body > div {
+		margin-top: 0px;
+	}
+}
+body > div:nth-of-type(1),
+body > div:nth-of-type(2),
+body > div.scroll-to-top {
+	margin-top: 0px;
+}
+body > div:nth-of-type(1),
+body > div.scroll-to-top {
+	padding-bottom: 2px;
+	border: 0;
+}
+body > div#main {
+  float: right;
+  display: block;
+  margin: 45px 0 0 0;
+  padding: 0;
+  border: 0;
+}
+
+a.unslider-arrow img {
+	-ms-transition: all .2s ease-in-out;
+	-webkit-transition: all .2s ease-in-out;
+	-moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+a.unslider-arrow.next:hover img {
+	-ms-transform: scale(1.35) rotate(-15deg);
+    -webkit-transform: scale(1.35) rotate(-15deg);
+	-moz-transform: scale(1.35) rotate(-15deg);
+    transform: scale(1.35) rotate(-15deg);
+}
+a.unslider-arrow.prev:hover img {
+	-ms-transform: scale(1.35) rotate(15deg);
+    -webkit-transform: scale(1.35) rotate(15deg);
+	-moz-transform: scale(1.35) rotate(15deg);
+    transform: scale(1.35) rotate(15deg);
+}
+nav.unslider-nav, nav.unslider-nav ol {
+  height: 30px;
+}
+
+
+/* INDEX PAGE - Slider */
+
+div.unslider {
+	position: relative;
+	z-index: 0;
+}
+div.my-slider img {
+	width: 100%;
+}
+
+/* INDEX PAGE - Bottom part, columns */
+
+div#index-page > div.body {
+	margin-top: 11px;
+	background: white;
+	float: left;
+}
+
+@media screen and (min-width: 655px) {
+	div#index-page div.column {
+		float: left;
+		height: auto;
+    width: 30%;
+	}
+
+	div#index-page div.column:nth-of-type(2),
+	div#index-page div.column:nth-of-type(3) {
+		margin-left: 5%;
+	}
+}
+
+@media screen and (max-width: 655px) {
+	div#index-page div.column {
+		float: left;
+		height: auto;
+	}
+
+	div#index-page div.column {
+		width: 100%;
+	}
+}
+
+div#index-page div.column {
+	background: white;
+}
+
+div#index-page div.column > div.header {
+	overflow: hidden;
+}
+
+div#index-page div.column > div.header > a {
+	width: 80%;
+	display: block;
+	line-height: 40px;
+	padding: 0 10%;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 20px;
+	cursor: default;
+	color: white;
+}
+
+div#index-page div.header.bordeaux a {
+	background-color: #ba1628;
+}
+
+div#index-page div.header.creamy a {
+	background-color: #C37E77;
+}
+
+div#index-page div.column > div.content {
+	margin-top: 20px;
+	float: left;
+}
+
+div.content img:hover {
+	opacity: 0.85;
+}
+
+div.content > div.entry {
+	padding: 0 6% 20px;
+	width: 88%;
+	float: left;
+}
+
+div.entry > div.entry-image {
+	float: left;
+	width: 45%;
+	height: auto;
+}
+
+div.entry > div.entry-image img {
+	max-width: 100%;
+	max-height: 100%;
+	width: 100%;
+	height: auto;
+  aspect-ratio: 15/8;
+	object-fit: contain;
+}
+
+div.entry > div.entry-title {
+	float: left;
+	width: 50%;
+	margin-left: 5%;
+	text-align: center;
+	vertical-align: middle;
+}
+
+div.entry > div.entry-title:hover > a {
+	text-decoration: underline;
+}
+
+@media screen and (min-width: 880px) {
+	div.entry > div.entry-title {
+		font-size: 15px;
+	}
+}
+
+@media screen and (min-width: 740px) and (max-width: 880px) {
+	div.entry > div.entry-title {
+		font-size: 13px;
+	}
+}
+
+@media screen and (min-width: 655px) and (max-width: 740px) {
+	div.entry > div.entry-title {
+		font-size: 11px;
+	}
+}
+
+/* LOGIN PAGE */
+div.login-wrapper {
+  width: 350px;
+  border: 2px solid #ba1628;
+  background-color: #f0f0f0;
+  margin: 30px auto 0 auto;
+  padding: 0 75px 20px 75px;
+  text-align: center;
+}
+@media screen and (max-width: 655px) {
+  div.login-wrapper {
+    width: calc(100% - 70px);
+    padding: 0 20px 20px 20px;
+    margin: 30px 15px 0 15px;
+  }
+}
+
+div.login-wrapper * {
+  width: 100%;
+}
+div.login-wrapper h2 {
+  margin: 30px 0;
+}
+
+div.login-wrapper form input {
+  font-size: 1.35em;
+  padding: 10px 5px;
+  text-align: center;
+  margin-top: 20px;
+  border: 0;
+}
+div.login-wrapper form input[type="text"] {
+  margin-top: 0;
+}
+div.login-wrapper form input[type="submit"] {
+  width: 360px;
+  background-color: #ba1628;
+  border-radius: 10px;
+  color: white;
+
+  transform: 0.5s all ease;
+}
+@media screen and (max-width: 655px) {
+  div.login-wrapper form input[type="submit"] {
+    width: 100% !important;
+  }
+}
+div.login-wrapper form input[type="submit"]:hover {
+  cursor: pointer;
+  background-color: #C81860;
+}
+
+div.login-wrapper span {
+  margin-top: 20px;
+  display: block;
+  font-size: 1.1em;
+}
+div.login-wrapper a {
+  margin-top: 20px;
+  color: #ba1628;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+h3.error, h3.success {
+  color: #ba1628;
+  font-weight: bold;
+}
+
+/* WINE PAGE */
+h1.wine-heading {
+  width: 100%;
+  margin: 20px 0 20px 0;
+  padding: 0;
+  text-align: center;
+}
+
+div.wine-left-pane {
+  width: 22.5%;
+  display: inline-block;
+  margin-left: 2.5%;
+}
+div.wine-right-pane {
+  margin: 30px 2.5% 0 3%;
+  padding: 0 1.5% 20px 1.5%;
+  width: 66%;
+  background-color: #f0f0f0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+img.wine-main {
+  width: 100%;
+  aspect-ratio: 1/1;
+  margin: 0 auto;
+  object-fit: contain;
+  display: block;
+}
+div.wine-rate h3 {
+  margin: 10px 0;
+  width: 100%;
+  text-align: center;
+  font-size: 1.1em;
+}
+div.wine-rate span.rating {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+span.rating i.fa {
+  font-size: 1.35em;
+  color: orange;
+}
+i.text-rating {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+span.rating:hover a.stars.unselected > i:before,
+div.comment-add span.star-comments:hover a.stars.unselected > i:before {
+  content: '\f005' !important;
+}
+span.rating > a.stars.unselected:hover ~ a.stars.unselected i:before,
+div.comment-add span.star-comments > a.stars.unselected:hover ~ a.stars.unselected i:before {
+  content: '\f006' !important;
+}
+a.stars.selected > i:before {
+  color: #ff8c00 !important;
+  content: '\f005' !important;
+}
+a.stars.removeSelection > i:before {
+  color: #ff8c00 !important;
+  content: '\f006' !important;
+}
+span.wishlist:hover i.fa:before {
+  content: '\f004' !important;
+  color: #ba1628 !important;
+}
+span.wishlist:hover i.fa, span.wishlist:hover a, span.wishlist i.fa.fa-heart {
+  color: #ba1628 !important;
+}
+
+span.wishlist {
+  font-size: 1em;
+  display: block;
+  margin: 15px auto 0 auto;
+  text-align: center;
+  font-weight: bold;
+}
+
+div.wine-right-pane p {
+  margin-bottom: 8px;
+  font-size: 1.1em;
+}
+div.wine-right-pane p:first-of-type {
+  margin-top: 15px !important;
+}
+div.wine-right-pane p:last-of-type {
+  margin-top: 25px !important;
+}
+
+div.wine-comments-wrapper {
+  margin: 30px 3% 0 3%;
+  width: 94%;
+}
+div.wine-comments-wrapper h3 {
+  width: 100%;
+  text-align: left;
+  border-bottom: 2px solid #bbb;
+  margin: 10px 0;
+  padding-bottom: 8px;
+}
+
+div.comment {
+  min-height: 80px;
+  background: #f0f0f0;
+}
+div.comment div.star-rating {
+  width: 140px;
+  padding: 15px;
+  display: inline-block;
+}
+div.comment div.comment-body {
+  width: calc(100% - 200px);
+  display: inline-block;
+  vertical-align: top;
+  padding: 25px 15px 15px 15px;
+}
+div.comment div.comment-body p:first-of-type {
+  font-size: 1.1em;
+}
+div.comment div.comment-body p:nth-of-type(2) {
+  font-size: 1em;
+  font-style: italic;
+}
+span.star-comments {
+  font-size: 1.35em;
+  color: orange;
+  width: 100%;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+}
+span.star-comments a {
+  color: orange !important;
+}
+span.star-commenter {
+  width: 100%;
+  display: block;
+  margin: 10px auto 0 auto;
+  text-align: center;
+  font-weight: bold;
+}
+
+div.comment-add span.star-comments a, div.wine-rate span.rating a {
+  cursor: pointer;
+}
+
+div.comment-add div.comment-body textarea {
+  border-radius: 5px;
+}
+div.comment-add form input[type="submit"] {
+  float: right;
+  padding: 4px 15px;
+  text-transform: uppercase;
+  background-color: #ba1628;
+  color: white;
+  font-size: 14px;
+  border: 0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+div.comment-add form input[type="submit"]:hover {
+  background-color: #C81860;
+}
+div.comment-add a {
+  color: #BA1628;
+}
+div.comment-add a:hover {
+  color: #C81860;
+}
+
+textarea.rated {
+  background-color: #eee;
+}
+textarea.rated:focus {
+  background-color: white;
+}
+
+/* CATALOGUE PAGE */
+div.cat-table {
+  width: 80%;
+  margin: 10px auto 0 10%;
+  padding: 0;
+}
+
+div.cat-row {
+  display: block;
+  width: 100%;
+  height: 250px;
+  border-bottom: 2px solid #BA1628;
+}
+div.cat-row:last-of-type {
+  border-bottom: 0;
+}
+
+div.cat-cell {
+  float: left;
+  width: calc(33.3% - 22px);
+  height: 230px;
+  border-right: 2px solid #BA1628;
+  padding: 10px;
+  margin: 0;
+}
+div.cat-cell:nth-child(3n), div.cat-cell.last {
+  border-right: 0;
+}
+
+div.cat-cell img {
+  width: auto;
+  height: 160px;
+  display: block;
+  margin: 0 auto;
+}
+div.cat-cell a.image:hover img {
+  opacity: 0.8;
+}
+div.cat-cell span {
+  width: 100%;
+  display: block;
+  margin-top: 10px;
+}
+div.cat-cell a.wine-name {
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-weight: bold;
+  color: #BA1628;
+  margin-top: 15px;
+}
+div.cat-cell a.wine-name:hover, span.pagination a:hover {
+  color: #C81860;
+}
+
+span.pagination {
+  float: right;
+  margin-top: 10px;
+}
+
+span.pagination a {
+  color: #BA1628;
+  font-weight: bold;
+  display: inline;
+}
+
+/* PROFILE PAGE */
+div.profile-row {
+  margin: 0 10%;
+  padding: 10px 0;
+  display: block;
+  width: 80%;
+  border-top: 2px solid #bbb;
+}
+
+div.profile-row:first-of-type {
+  border-top: 0 !important;
+}
+
+img.profile-picture {
+  display: inline-block;
+  width: 20%;
+  height: auto;
+  object-fit: contain;
+  aspect-ratio: 1/1;
+}
+
+div.profile-right-pane {
+  display: inline-block;
+  margin-left: 5%;
+  width: 74.25%;
+  vertical-align: top;
+}
+
+div.profile-right-pane h1.profile-name {
+  text-align: center;
+  margin-top: 10%;
+}
+
+div.profile-right-pane h1.profile-name.wineryview {
+  margin-top: 3%;
+}
+
+div.profile-right-pane div.winery-information {
+  padding: 15px 1.5%;
+  width: 100%;
+  background-color: #f0f0f0;
+}
+
+div.profile-row h3 {
+  margin-top: 0;
+}
+
+div.profile-row.winery-chosen div.wine-left-pane {
+  position: relative;
+}
+
+div.profile-row.winery-chosen div.wine-right-pane,
+div.wine-right-pane.add-wine {
+  margin-top: 0;
+}
+
+div.profile-row.winery-chosen img.ribbon {
+  position: absolute;
+  width: 75px;
+  height: 75px;
+  opacity: 0.85;
+  right: 0;
+  top: 0;
+}
+
+div.profile-row.wishlist div.cat-cell {
+  height: 255px;
+}
+div.profile-row.wishlist div.cat-row {
+  height: 275px;
+}
+
+div.profile-row h3.error:last-child {
+  margin-bottom: 0;
+}
+
+a#change-name, a#delete-profile {
+  cursor: pointer;
+}
+a#change-name:hover i, a#delete-profile:hover i {
+  color: #ba1628;
+}
+div.wine-right-pane a {
+  display: inline-block; 
+  color: #ba1628; 
+  font-weight: bold;
+}
+div.wine-right-pane a:hover {
+  color: #C81860;
+}
+
+div.cat-cell a.wine-name + i {
+  display: block; 
+  width: 100%; 
+  text-align: center; 
+  margin: 10px 0;
+}
+
+a.trash-can {
+  display: inline-block; 
+  top: -1px; 
+  position: relative; 
+  color: #ba1628;
+  cursor: pointer;
+}
+
+/* ADD WINE PAGE */
+table.add-wine td {
+  padding: 8px;
+}
+form.add-wine input, form.add-wine select, form.add-wine textarea {
+  border-radius: 5px;
+  font-size: 1em;
+  padding: 3px;
+}
+
+form.add-wine input[type="submit"] {
+  display: block;
+  margin: 10px auto;
+  width: 360px;
+  background-color: #ba1628;
+  border-radius: 10px;
+  color: white;
+
+  transform: 0.5s all ease;
+}
+form.add-wine input[type="submit"]:hover {
+  cursor: pointer;
+  background-color: #C81860;
+}
+
+span.enter-another {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 20px;
+}
+span.enter-another a {
+  cursor: pointer;
+}
+
+div.wine-left-pane input[type="file"] {
+  width: 100%; 
+  padding: 0; 
+  text-align: center; 
+  margin-top: 10px; 
+  font-size: 1.2em;
+  border-radius: 0px;
+}
